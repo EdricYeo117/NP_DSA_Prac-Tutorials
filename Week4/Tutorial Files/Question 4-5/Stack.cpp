@@ -1,6 +1,4 @@
 #include "Stack.h"
-// Define Itemtype
-typedef int ItemType;
 
 // Default constructor
 Stack::Stack()
@@ -9,11 +7,10 @@ Stack::Stack()
 }
 
 // Destructor
-Stack::~Stack()
-{
-    while (!isEmpty())
-    {
-        pop();
+Stack::~Stack() {
+    while (!isEmpty()) {
+        ItemType temp;
+        pop(temp);
     }
 }
 
