@@ -50,7 +50,7 @@ private:
     double asg;
 
 public:
-    Module(const string name, double ca, double ct, double asg)
+    Module(const string &name, double ca, double ct, double asg)
     {
         this->name = name;
         this->ca = ca;
@@ -207,6 +207,6 @@ void mainMenu()
 
 int main()
 {
-   calculateModules();
+    mainMenu();
     return 0;
 }
