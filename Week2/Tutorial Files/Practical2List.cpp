@@ -29,7 +29,13 @@ private:
     double asg;
 
 public:
-    Module(const string &name, double ca, double ct, double asg) : name(name), ca(ca), ct(ct), asg(asg) {}
+    Module(const string &name, double ca, double ct, double asg)
+    {
+        this->name = name;
+        this->ca = ca;
+        this->ct = ct;
+        this->asg = asg;
+    }
 
     void setName(const string &name) { this->name = name; }
     void setCa(double ca) { this->ca = ca; }
@@ -167,9 +173,8 @@ void mainMenu(ContactManager &contactManager) {
     } while (option != EXIT);
 }
 
-int main() {
-    ContactManager contactManager;
-    calculateModules();
-    mainMenu(contactManager);
+int main()
+{
+    mainMenu();
     return 0;
 }
