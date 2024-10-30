@@ -23,42 +23,63 @@ a b
 b 
 */
 
-int main() {
-    // Read User Input
-    cout << "Enter a string, check if it is a palindrome: ";
+// Function to read user input
+string getUserInput() {
+    cout << "Enter a string to check if it is a palindrome: ";
     string userInput;
     getline(cin, userInput);
+    return userInput;
+}
 
-    // Create a queue
-    Queue q;
-
-    // Convert string to lowercase chars, enqueue each char
-    string sanitisedInput = "";
-    for (int i = 0; i < userInput.length(); i++) {
-        if (isalpha(userInput[i])) {
-            sanitisedInput += tolower(userInput[i]);
-            q.enqueue(tolower(userInput[i]));
+// Function to sanitize the input by removing non-alphabetic characters and converting to lowercase
+string sanitizeInput(const string& input) {
+    string sanitized = "";
+    for (char c : input) {
+        if (isalpha(c)) {
+            sanitized += tolower(c);
         }
     }
+    return sanitized;
+}
 
-    // Check if the string is a palindrome
-    bool isPalindrome = true;
-    int length = sanitisedInput.length();
+// Function to enqueue all characters of the sanitized input into a queue
+void enqueueCharacters(const string& sanitizedInput, Queue& q) {
+    for (char c : sanitizedInput) {
+        q.enqueue(c);
+    }
+}
 
-    // Compare front and back characters using queue,
-    for (int i = 0, i < length / 2; i++) {
+// Function to determine if the sanitized input is a palindrome
+bool isPalindrome(const string& sanitizedInput, Queue& q) {
+    int length = sanitizedInput.length();
+
+    // Compare front and corresponding back characters
+    for (int i = 0; i < length / 2; i++) {
         ItemType frontChar;
         q.getFront(frontChar);
         q.dequeue();
 
-        // Compare with the corresponding character from the end of sanistised input
-        if (frontChar != sanitisedInput[length - i - 1]) {
-            isPalindrome = false;
-            break;
+        // Compare with the corresponding character from the end of the sanitized input
+        if (frontChar != sanitizedInput[length - i - 1]) {
+            return false;  // Not a palindrome
         }
     }
+    return true;  // If all characters match
+}
 
-    if (isPalindrome) {
+int main() {
+    // Step 1: Read user input
+    string userInput = getUserInput();
+
+    // Step 2: Sanitize user input
+    string sanitizedInput = sanitizeInput(userInput);
+
+    // Step 3: Create a queue and enqueue sanitized input
+    Queue q;
+    enqueueCharacters(sanitizedInput, q);
+
+    // Step 4: Check if the string is a palindrome
+    if (isPalindrome(sanitizedInput, q)) {
         cout << "The string is a palindrome." << endl;
     } else {
         cout << "The string is not a palindrome." << endl;

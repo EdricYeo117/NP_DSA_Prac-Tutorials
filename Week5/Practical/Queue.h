@@ -6,39 +6,27 @@ using namespace std;
 
 typedef char ItemType;
 
-class Queue
-{
-private:
-    struct Node
-    {
-        ItemType item; // item
-        Node *next;    // pointer pointing to next item
-    };
+// Define a templated node structure
+template <typename T>
+struct Node {
+    T item;
+    Node* next;
+};
 
-    Node *frontNode; // point to the first item
-    Node *backNode;  // point to the first item
+// Define a templated Queue class
+template <typename T>
+class Queue {
+private:
+    Node<T>* frontNode;
+    Node<T>* backNode;
 
 public:
-    // constructor
-    Queue();
-
-    ~Queue();
-
-    // enqueue (add) item at the back of queue
-    bool enqueue(ItemType item);
-
-    // dequeue (remove) item from front of queue
-    bool dequeue();
-
-    // dequeue (remove) and retrieve item from front of queue
-    bool dequeue(ItemType &item);
-
-    // retrieve (get) item from front of queue
-    void getFront(ItemType &item);
-
-    // check if the queue is empty
-    bool isEmpty();
-
-    // display items in queue from front to back
-    void displayItems();
+    Queue();  // Constructor
+    ~Queue();  // Destructor
+    bool enqueue(T item);  // Add item to the queue
+    bool dequeue();  // Remove item from the front of the queue
+    bool dequeue(T& item);  // Retrieve and remove item from the front of the queue
+    void getFront(T& item);  // Retrieve item from the front without removing
+    bool isEmpty() const;  // Check if the queue is empty
+    void displayItems() const;  // Display all items in the queue
 };
