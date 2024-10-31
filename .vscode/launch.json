@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": ".",
-      "program": "build/Debug/outDebug",
+      "cwd": "c:/Users/spart/OneDrive - Ngee Ann Polytechnic/Semester 4/DSA/NP_DSA_Prac-Tutorials/Week6/Practical",
+      "program": "c:/Users/spart/OneDrive - Ngee Ann Polytechnic/Semester 4/DSA/NP_DSA_Prac-Tutorials/Week6/Practical/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
