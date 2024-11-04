@@ -108,6 +108,19 @@
     "streambuf": "cpp",
     "text_encoding": "cpp",
     "typeinfo": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "ios": "cpp",
+    "queue": "cpp",
+    "stack": "cpp",
+    "xfacet": "cpp",
+    "xiosbase": "cpp",
+    "xlocale": "cpp",
+    "xlocinfo": "cpp",
+    "xlocnum": "cpp",
+    "xmemory": "cpp",
+    "xstddef": "cpp",
+    "xstring": "cpp",
+    "xtr1common": "cpp",
+    "xutility": "cpp"
   }
 }

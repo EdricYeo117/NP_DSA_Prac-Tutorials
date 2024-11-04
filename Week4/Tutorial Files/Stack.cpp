@@ -112,3 +112,12 @@ void Stack::displayInOrderOfInsertion() {
         tempStack.displayInOrder();
     }
 }
+
+
+/*
+Stack s1; - This is statically allocated, so the s1 will point to topNode in stack memory, which will point to whatever node in heap memory
+s1.push(1);
+
+Stack* s2 = new Stack(); - This is dynamically allocated, so the s2 will point to topNode in heap memory
+s2->push(2);
+*/
