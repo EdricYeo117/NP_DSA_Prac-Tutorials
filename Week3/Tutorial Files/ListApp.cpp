@@ -11,7 +11,7 @@ List::List()
 List::~List()
 {
     while (!isEmpty())
-        remove(1);
+        remove(0);
 }
 
 // Add an item to the back of the list (append)
