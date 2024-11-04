@@ -45,7 +45,7 @@ bool List::add(int index, ItemType item)
     Node *newNode = new Node;
     newNode->item = item;
 
-    if (index == 1)
+    if (index == 0)
     {
         newNode->next = firstNode;
         firstNode = newNode;
@@ -72,7 +72,7 @@ void List::remove(int index)
         return;
 
     Node *toDelete;
-    if (index == 1)
+    if (index == 0)
     {
         toDelete = firstNode;
         firstNode = firstNode->next; // Update head to the next node
