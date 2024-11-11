@@ -43,14 +43,14 @@ string sanitizeInput(const string& input) {
 }
 
 // Function to enqueue all characters of the sanitized input into a queue
-void enqueueCharacters(const string& sanitizedInput, Queue& q) {
+void enqueueCharacters(const string& sanitizedInput, Queue<ItemType>& q) {
     for (char c : sanitizedInput) {
         q.enqueue(c);
     }
 }
 
 // Function to determine if the sanitized input is a palindrome
-bool isPalindrome(const string& sanitizedInput, Queue& q) {
+bool isPalindrome(const string& sanitizedInput, Queue<ItemType>& q) {
     int length = sanitizedInput.length();
 
     // Compare front and corresponding back characters
@@ -75,7 +75,7 @@ int main() {
     string sanitizedInput = sanitizeInput(userInput);
 
     // Step 3: Create a queue and enqueue sanitized input
-    Queue q;
+    Queue<ItemType> q;
     enqueueCharacters(sanitizedInput, q);
 
     // Step 4: Check if the string is a palindrome

@@ -26,7 +26,7 @@ void simulateCheckout(int simulatedMinutes) {
     while (currentTime < simulatedMinutes) {
         // Add 1 minute to the current time
         currentTime++;
-        cout << "Minute " << currentTime << endl;
+        // cout << "Minute " << currentTime << endl;
 
         // Serve customer if queue is not empty (Step 1)
         if (!customerQueue.isEmpty()) {
@@ -61,17 +61,16 @@ void simulateCheckout(int simulatedMinutes) {
                 cin >> customerName;
                 Customer newCustomer(customerName, currentTime);
                 customerQueue.enqueue(newCustomer);
-                cout << "Customer " << customerName << " arrived." << endl;
+                // cout << "Customer " << customerName << " arrived." << endl;
             }
         } else {
-            cout << "No customers arrive." << endl;
+            // cout << "No customers arrive." << endl;
         }
 
         // Display queue status
         cout << "Current queue length: " << (customerQueue.isEmpty() ? 0 : currentTime - totalCustomerServed) << endl;
     }
 
-        // Display statitics
         // Display average wait time in simulation
         if (totalCustomerServed > 0) {
             cout << "In this " <<simulatedMinutes << "-min period, the average wait time is " << totalWaitTime / totalCustomerServed << " minutes." << endl;
@@ -79,7 +78,7 @@ void simulateCheckout(int simulatedMinutes) {
             cout << "No customer served." << endl;
         }
         // Display number of customers served
-            cout << totalCustomerServed << " customers served." << endl;
+        //  cout << totalCustomerServed << " customers served." << endl;
     }
 
 int main() {

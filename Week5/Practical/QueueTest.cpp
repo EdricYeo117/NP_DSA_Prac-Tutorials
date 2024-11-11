@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    Queue q;
+    Queue<char> q;
 
     // Test if the queue is initially empty
     cout << "Initial state: " << (q.isEmpty() ? "Queue is empty." : "Queue is not empty.") << endl;
