@@ -1,26 +1,42 @@
+// List.h
 #ifndef LIST_H
 #define LIST_H
 
-#include "Person.h"
 #include <iostream>
 #include <string>
+#include <algorithm> // For std::remove_if
 
+// Template Class Declaration
+template <typename T>
 class List {
 private:
-    Person* array;   // Pointer to dynamic array of Person objects
-    int size;        // Current number of elements
-    int capacity;    // Maximum capacity of the array
+    T* array;          // Pointer to dynamic array of elements
+    int size;          // Current number of elements
+    int capacity;      // Maximum capacity of the array
 
     void resize(int newCapacity);  // Helper function to resize the array
 
 public:
-    List(int initialCapacity = 10);  // Constructor
-    ~List();  // Destructor
+    // Constructor
+    explicit List(int initialCapacity = 10);
 
-    void displayContacts() const;  // Method to display all contacts
-    void add(const std::string& name, const std::string& telNo);  // Method to add a contact
-    void remove(const std::string& telNo);  // Method to remove a contact by phone number
-    void get(const std::string& telNo) const;  // Method to get a contact by phone number
+    // Destructor
+    ~List();
+
+    // Display all elements (Assumes T has getName() and getTelNo() methods)
+    void displayContacts() const;
+
+    // Add a new element (Assumes T can be constructed with name and telNo)
+    void add(const std::string& name, const std::string& telNo);
+
+    // Remove an element by telNo (Assumes T has getTelNo() method)
+    void remove(const std::string& telNo);
+
+    // Get an element by telNo (Assumes T has getTelNo() method)
+    void get(const std::string& telNo) const;
 };
+
+// Include the implementation file
+#include "List.tpp"
 
 #endif  // LIST_H

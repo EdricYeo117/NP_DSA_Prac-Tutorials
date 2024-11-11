@@ -1,19 +1,16 @@
 #include <iostream>
 #include <string>
 #include "List.h"
-#include "List.cpp"
 #include "Person.h"
-#include "Person.cpp"
 #include <vector> // Include vector for dynamic array
 #include "Module.h"
-#include "Module.cpp"
 
 using namespace std;
 
 // Main menu function
 void mainMenu()
 {
-    List contactList;  // Create an instance of List to manage contacts
+    List<Person> contactList;  // Create an instance of List to manage contacts
     int option;
 
     do

@@ -31,5 +31,5 @@ public:
     // Calculate total score with weights: ca: 30%, ct: 30%, asg: 40%
     double calculateTotal() const;
 };
-
+#include "Module.cpp"
 #endif // MODULE_H

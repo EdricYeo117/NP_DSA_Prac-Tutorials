@@ -40,6 +40,7 @@ bool Stack::pop()
     {
         Node *temp = topNode;    // Save the top node
         topNode = topNode->next; // Update topNode to the next node
+        temp->next = nullptr;
         delete temp;             // Delete the top node
         return true;
     }

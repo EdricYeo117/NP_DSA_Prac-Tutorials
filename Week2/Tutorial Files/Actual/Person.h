@@ -16,5 +16,5 @@ public:
     string getName() const;
     string getTelNo() const;
 };
-
+#include "Person.cpp"
 #endif  // PERSON_H
