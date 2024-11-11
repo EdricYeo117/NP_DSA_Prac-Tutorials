@@ -68,7 +68,7 @@ void simulateCheckout(int simulatedMinutes) {
         }
 
         // Display queue status
-        cout << "Current queue length: " << (customerQueue.isEmpty() ? 0 : currentTime - totalCustomerServed) << endl;
+        // cout << "Current queue length: " << (customerQueue.isEmpty() ? 0 : currentTime - totalCustomerServed) << endl;
     }
 
         // Display average wait time in simulation
