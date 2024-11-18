@@ -73,21 +73,50 @@ void Stack::getTop(ItemType &item)
     }
 }
 
-void Stack::displayInOrder()
+// void Stack::displayInOrder()
+// {
+//     if (isEmpty())
+//     {
+//         cout << "Stack is empty." << endl;
+//     }
+//     else
+//     {
+//         Node *temp = topNode;
+//         while (temp != nullptr)
+//         {
+//             cout << temp->item << " ";
+//             temp = temp->next;
+//         }
+//     }
+//     cout << endl;
+// }
+
+vvoid Stack::displayInOrder()
 {
     if (isEmpty())
     {
         cout << "Stack is empty." << endl;
+        return;
     }
-    else
+
+    Stack tempStack; // Temporary stack to hold elements
+    ItemType item;
+
+    // Pop elements from the original stack and push them into the temporary stack
+    while (!isEmpty())
     {
-        Node *temp = topNode;
-        while (temp != nullptr)
-        {
-            cout << temp->item << " ";
-            temp = temp->next;
-        }
+        pop(item);
+        tempStack.push(item);
     }
+
+    // Display elements in the temporary stack and restore them to the original stack
+    while (!tempStack.isEmpty())
+    {
+        tempStack.pop(item);
+        cout << item << " "; // Display the item
+        push(item);          // Push it back into the original stack
+    }
+
     cout << endl;
 }
 

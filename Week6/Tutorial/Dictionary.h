@@ -4,7 +4,7 @@
 #include<iostream>
 using namespace std;
 
-const int MAX_SIZE = 100;
+const int MAX_SIZE = 101;
 typedef string ItemType;
 typedef int KeyType;
 
