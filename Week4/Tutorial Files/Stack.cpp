@@ -26,10 +26,14 @@ bool Stack::isEmpty()
 // Push item on top of the stack
 bool Stack::push(ItemType item)
 {
-    Node *newNode = new Node; // Create a new node
-    newNode->item = item;     // Store the item in the new node
-    newNode->next = topNode;  // Link the new node to the top node
-    topNode = newNode;        // Update the top node
+    Node* newNode = new Node;
+    if (newNode == nullptr) // Check if memory allocation failed
+    {
+        return false;
+    }
+    newNode->item = item;
+    newNode->next = topNode;
+    topNode = newNode;
     return true;
 }
 
@@ -91,7 +95,7 @@ void Stack::getTop(ItemType &item)
 //     cout << endl;
 // }
 
-vvoid Stack::displayInOrder()
+void Stack::displayInOrder()
 {
     if (isEmpty())
     {
