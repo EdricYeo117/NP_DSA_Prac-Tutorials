@@ -164,7 +164,9 @@ void List::sortedInsertR(ItemType item) {
 void List::sortedInsertHelper(Node* current, ItemType item) {
 	if (!current || current->item >= item) {
 		// Insert at the current position if end is reached or item is smaller
-		Node* newNode = new Node{item, current};
+		Node* newNode = new Node();
+		newNode->item = item;
+		newNode->next = current;
 		current = newNode;
 	} else {
 		// Recursive call for the next node
