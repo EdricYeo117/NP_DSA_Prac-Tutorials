@@ -59,6 +59,10 @@ void SortedDoublyLinkedListMovies::displayMovies() const {
     cout << endl;
 }
 
+MovieNode* SortedDoublyLinkedListMovies::getHead() const {
+    return head;
+}
+
 void SortedDoublyLinkedListMovies::clear() {
     MovieNode* current = head;
     while (current) {

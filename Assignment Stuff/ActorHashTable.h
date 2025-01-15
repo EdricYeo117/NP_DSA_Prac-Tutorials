@@ -18,6 +18,7 @@ private:
 public:
     ActorHashTable();
     ~ActorHashTable();
+    int getSize() const;
 
     // Methods to interact with the hash table
     void insertActor(const string& name,

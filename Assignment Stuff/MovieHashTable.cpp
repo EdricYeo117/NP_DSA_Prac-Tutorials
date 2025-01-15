@@ -7,7 +7,8 @@
 
 // Hash function to map years to bucket indices
 int MovieHashTable::hashFunction(int year) const {
-    return year % TABLE_SIZE;
+    // Ensures the hash index is within the bounds of TABLE_SIZE
+    return abs(year % TABLE_SIZE);
 }
 
 // -----------------------
@@ -28,6 +29,10 @@ MovieHashTable::~MovieHashTable() {
     }
 }
 
+int MovieHashTable::getSize() const {
+    return TABLE_SIZE;
+}
+
 // Insert a movie into the appropriate bucket's AVL tree
 void MovieHashTable::insertMovie(const std::string& title,
                                  const std::string& plot,
@@ -39,15 +44,16 @@ void MovieHashTable::insertMovie(const std::string& title,
 }
 
 // Search for a movie by title within a specific year
-MovieAVLNode* MovieHashTable::searchMovieByTitle(int year, const std::string& title) const {
+MovieAVLNode* MovieHashTable::searchMovieByTitle(int year, const string& title) const {
     int bucketIndex = hashFunction(year);
-
     if (!buckets[bucketIndex]) {
-        std::cerr << "No movies found for the year " << year << ".\n";
+        cerr << "No movies found for the given year: " << year << endl;
         return nullptr;
     }
 
-    return buckets[bucketIndex]->searchMovie(title);
+    // Get the root of the AVL tree for this bucket
+    MovieAVLNode* root = buckets[bucketIndex]->getRoot();
+    return buckets[bucketIndex]->searchMovie(root, title);
 }
 
 // Add an actor to a specific movie
@@ -75,8 +81,40 @@ void MovieHashTable::displayMoviesByYear(int recentYears) const {
     }
 }
 
+void MovieHashTable::displayAllMovies() const {
+    bool hasMovies = false; // Flag to track if there are any movies
+    cout << "Displaying all movies in the hash table:\n";
+    for (int i = 0; i < TABLE_SIZE; ++i) {
+        if (buckets[i]) { // If the bucket has an AVL tree
+            buckets[i]->displayMoviesByYear(0); // Passing 0 ensures all movies are displayed
+            hasMovies = true;
+        }
+    }
+    if (!hasMovies) {
+        cout << "No movies found in the hash table.\n";
+    }
+}
+
 // Display all actors in a given movie
 void MovieHashTable::displayActorsInMovie(int year, const std::string& movieTitle) const {
     int bucketIndex = hashFunction(year);
     buckets[bucketIndex]->displayActorsInMovie(movieTitle);
+}
+
+// Get a specific bucket (returns nullptr if index is out of bounds)
+MovieAVLTree* MovieHashTable::getBucket(int index) const {
+    // Check for valid bucket index
+    if (index < 0 || index >= TABLE_SIZE) {
+        std::cerr << "Invalid bucket index: " << index << ".\n";
+        return nullptr;
+    }
+
+    // Return the bucket at the specified index
+    return buckets[index];
+}
+
+// Retrieve the bucket (MovieAVLTree) for a given year
+MovieAVLTree* MovieHashTable::getBucketByYear(int year) const {
+    int bucketIndex = hashFunction(year); // Use private hashFunction
+    return getBucket(bucketIndex);       // Use existing getBucket method
 }

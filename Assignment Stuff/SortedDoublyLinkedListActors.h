@@ -36,6 +36,9 @@ public:
                      const string& rating);
     void displayActors() const;
 
+    void updateActorInList(const std::string& currentName, const std::string& newName,
+                                                     const std::string& newYearOfBirth, const std::string& newRating);
+
 private:
     ActorNode* head;
     ActorNode* tail;

@@ -63,6 +63,25 @@ void SortedDoublyLinkedListActors::displayActors() const {
     cout << endl;
 }
 
+void SortedDoublyLinkedListActors::updateActorInList(const std::string& currentName, const std::string& newName,
+                                                     const std::string& newYearOfBirth, const std::string& newRating) {
+    ActorNode* current = head;
+
+    while (current) {
+        if (current->actorName == currentName) {
+            // Update actor details
+            current->actorName = newName;
+            current->yearOfBirth = newYearOfBirth;
+            current->rating = newRating;
+            return;
+        }
+        current = current->next;
+    }
+
+    std::cout << "Actor not found in the movie's actor list.\n";
+}
+
+
 // Clear the entire list
 void SortedDoublyLinkedListActors::clear() {
     ActorNode* current = head;

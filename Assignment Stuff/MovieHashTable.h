@@ -1,4 +1,5 @@
 #ifndef MOVIE_HASH_TABLE_H
+
 #define MOVIE_HASH_TABLE_H
 
 #pragma once
@@ -20,6 +21,7 @@ public:
     // Constructor and Destructor
     MovieHashTable();
     ~MovieHashTable();
+    int getSize() const;
 
     // Methods to manipulate the hash table
     void insertMovie(const std::string& title,
@@ -37,8 +39,12 @@ public:
                          const std::string& rating);
 
     void displayMoviesByYear(int recentYears) const;
+    void displayAllMovies() const;
 
     void displayActorsInMovie(int year, const std::string& movieTitle) const;
+    
+    MovieAVLTree* getBucket(int index) const;
+    MovieAVLTree* getBucketByYear(int year) const;
 };
 
 #endif // MOVIE_HASH_TABLE_H

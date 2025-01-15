@@ -1,4 +1,4 @@
-#ifndef ACTIR_AVL_TREE_H
+#ifndef ACTOR_AVL_TREE_H
 #define ACTOR_AVL_TREE_H
 
 #include <string>

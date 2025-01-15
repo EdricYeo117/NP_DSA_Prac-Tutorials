@@ -62,8 +62,7 @@ public:
     void displayActorsInMovie(const string& movieTitle) const;
     MovieAVLNode* searchMovie(MovieAVLNode* node,
                               const string& title) const;
-    MovieAVLNode* searchMovie(const std::string& title) const;
-
+    MovieAVLNode* getRoot() const;
 
 private:
     MovieAVLNode* root;

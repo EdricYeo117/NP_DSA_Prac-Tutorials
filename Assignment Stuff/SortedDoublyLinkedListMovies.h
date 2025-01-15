@@ -31,6 +31,7 @@ public:
 
     void insertMovie(const string& title, const string& plot, const string& year, double rating);
     void displayMovies() const;
+    MovieNode* getHead() const;
 
 private:
     MovieNode* head;

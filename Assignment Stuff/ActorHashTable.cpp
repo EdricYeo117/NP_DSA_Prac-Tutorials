@@ -15,9 +15,20 @@ ActorHashTable::~ActorHashTable() {
     }
 }
 
+int ActorHashTable::getSize() const {
+    return TABLE_SIZE;
+}
+
+
 int ActorHashTable::hashFunction(const string& yearOfBirth) const {
-    int year = stoi(yearOfBirth); // Convert year of birth to an integer
-    return year % TABLE_SIZE;    // Map the year to a bucket index
+    try {
+        int year = stoi(yearOfBirth); // Convert year of birth to an integer
+        return abs(year % TABLE_SIZE); // Ensure non-negative index
+    }
+    catch (const invalid_argument&) {
+        cerr << "Invalid year of birth: " << yearOfBirth << endl;
+        return 0; // Default to first bucket
+    }
 }
 
 void ActorHashTable::insertActor(const string& name,
